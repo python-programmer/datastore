@@ -10,10 +10,10 @@ class BaseFormatter:
         pass
 
     def load(self, source: str):
-        raise NotImplementedError(messages.NOT_IMPLEMENTED_EXCEPTION)
+        raise NotImplementedError(messages.NOT_IMPLEMENTED_ERROR)
 
     def dump(self, data: dict):
-        raise NotImplementedError(messages.NOT_IMPLEMENTED_EXCEPTION)
+        raise NotImplementedError(messages.NOT_IMPLEMENTED_ERROR)
 
 
 class JsonFormatter(BaseFormatter):

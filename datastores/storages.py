@@ -12,13 +12,13 @@ class BaseStorage:
         self.formatter = formatter
 
     def getData(self):
-        raise NotImplementedError(messages.NOT_IMPLEMENTED_EXCEPTION)
+        raise NotImplementedError(messages.NOT_IMPLEMENTED_ERROR)
 
     def save(self, data: str):
-        raise NotImplementedError(messages.NOT_IMPLEMENTED_EXCEPTION)
+        raise NotImplementedError(messages.NOT_IMPLEMENTED_ERROR)
 
     def remove(self, data: str):
-        raise NotImplementedError(messages.NOT_IMPLEMENTED_EXCEPTION)
+        raise NotImplementedError(messages.NOT_IMPLEMENTED_ERROR)
 
 
 class   LocalStorage(BaseStorage):
@@ -31,9 +31,12 @@ class   LocalStorage(BaseStorage):
         os.remove(self.url)
     
     def getData(self):
-        with open(self.url, 'r') as stream:
-            # FIXME: performance issue, It is just for design and illustration
-            return self.formatter.load(stream)
+        if os.path.exists(self.url):
+            with open(self.url, 'r') as stream:
+                # FIXME: performance issue, It is just for design and illustration
+                return self.formatter.load(stream)
+        else:
+            return {}
 
     def save(self, data: dict):
         with open(self.url, 'w') as stream:

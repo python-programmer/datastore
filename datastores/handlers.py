@@ -1,5 +1,9 @@
 from typing import Any
 from datastores.storages import BaseStorage
+from datastores import messages
+
+# Since there are no primitive types in Python, I used this primitive types:
+PRIMITIVES = (int, str, bool, float)
 
 class Handler:
 
@@ -7,11 +11,18 @@ class Handler:
         self.storage = storage
 
     def insert(self, key: Any, value: Any):
+        if type(value) not in PRIMITIVES:
+            raise ValueError(messages.VALUE_ERROR)
+
         source = self.storage.getData()
         source[key] = value
         self.storage.save(source)
 
     def bulk_insert(self, data: dict):
+        for value in data.values():
+            if type(value) not in PRIMITIVES:
+                raise ValueError(messages.VALUE_ERROR)
+
         source = self.storage.getData()
         source.update(data)
         self.storage.save(source)
