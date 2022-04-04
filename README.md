@@ -1,4 +1,4 @@
-# datastore-y42 (development is in progress)
+# datastore-y42 (For Design and Architecture purpose)
 A datastore package that is used to store and retrieve arbitrary data in multiple formats &amp; destinations.
 
 
@@ -23,16 +23,24 @@ In the root directory of the project, run below command in the terminal:
 pip install -r requirements.txt
 ```
 
+## Test
+
+Run below command to test all code:
+
+```
+$ pytest
+```
+
 
 ## TODO List
 
-* tests
 * extend and test it with a custom yaml formatter
 * extend and test it with a custom storage
 * thread-safety
 * I am busy, I haven't enough time 😅
 
-## description
+
+## Description
 
 ### Formatter
 **Note**: everything (in this project) that we'd work with is, a Python dict. Thanks to Formatters that do this conversions for us
@@ -114,7 +122,7 @@ class   LocalStorage(BaseStorage):
         os.remove(self.url)
 ```
 
-### handlers
+### Handlers
 
 **Question**: where to use the above storage? **Handler**
 
@@ -190,3 +198,10 @@ handler.bulk_insert({'key-21': 'no', 'key-22': 'hello'})
 
 handler.delete('key-77')
 ```
+
+
+### How to test new storage, formatter
+
+I mainly used `pytest` for testing functionalities, thanks to `pytest`
+I added a new file in the `datastores` package, named `test_datastores.py`,
+You can use it and test your own custom storage, formatter, and handlers

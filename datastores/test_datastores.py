@@ -178,7 +178,7 @@ def test_bulk_insert_to_local_storage_with_json_formatter_with_invalid_data(hand
         handler.bulk_insert(invalid_bulk_data)
 
 
-def test_bulk_insert_to_local_storage_with_json_formatter_with_invalid_data(handler: Handler, bulk_data: dict):
+def test_bulk_insert_to_local_storage_with_json_formatter_with_valid_data(handler: Handler, bulk_data: dict):
     # Act
     handler.bulk_insert(bulk_data)
     result = handler.query()
