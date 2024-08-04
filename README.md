@@ -1,4 +1,4 @@
-# datastore-y42 (For Design and Architecture purpose)
+# datastore (For Design and Architecture purpose)
 A datastore package that is used to store and retrieve arbitrary data in multiple formats &amp; destinations.
 
 
@@ -13,7 +13,7 @@ A datastore package that is used to store and retrieve arbitrary data in multipl
 Create a new virtualenv:
 
 ```
-$ cd datastores-y42/
+$ cd datastores/
 $ python3 -m venv venv
 ```
 
